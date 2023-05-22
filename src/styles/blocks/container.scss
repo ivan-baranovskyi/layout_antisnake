@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+
+  @media (min-width: 300px) {
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
+  }
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 300px;
+    color: white;
+
+
+    @each $color, $num in $colors {
+      &--color-#{$num} {
+        background-color: #{$color};
+      }
+
+    @for $index from 1 through 6 {
+      &:nth-child(#{$index})::before {
+        display: inline-block;
+        content: "#{$index}";
+      }
+
+    }
+
+
+    }
+  }
+
+}
+
+
